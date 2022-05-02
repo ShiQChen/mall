@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gulimall-coupon" />
+        <module name="gulimall-third-part" />
         <module name="gulimall-common" />
         <module name="gulimall-stream" />
         <module name="renren-fast" />
