@@ -23,7 +23,7 @@ import com.atguigu.common.utils.R;
  * @date 2022-04-25 10:04:01
  */
 @RestController
-@RequestMapping("product/categorybrandrelation")
+@RequestMapping("/product/categorybrandrelation")
 public class CategoryBrandRelationController {
     @Autowired
     private CategoryBrandRelationService categoryBrandRelationService;
@@ -31,7 +31,7 @@ public class CategoryBrandRelationController {
     /**
      * 获取当前品牌关联的所有分类列表
      */
-    @GetMapping("/category/list")
+    @GetMapping("/catelog/list")
     public R categorylist(@RequestParam("brandId")Long brandId){
         List<CategoryBrandRelationEntity> data =
                 categoryBrandRelationService
@@ -39,6 +39,15 @@ public class CategoryBrandRelationController {
                                 .eq("brand_id", brandId));
 
         return R.ok().put("data", data);
+    }
+
+    /**
+     * 保存
+     */
+    @RequestMapping("/save")
+    public R save(@RequestBody CategoryBrandRelationEntity categoryBrandRelation) {
+        categoryBrandRelationService.saveDetail(categoryBrandRelation);
+        return R.ok();
     }
 
     /**
@@ -62,15 +71,6 @@ public class CategoryBrandRelationController {
         return R.ok().put("categoryBrandRelation", categoryBrandRelation);
     }
 
-    /**
-     * 保存
-     */
-    @RequestMapping("/save")
-    public R save(@RequestBody CategoryBrandRelationEntity categoryBrandRelation){
-		categoryBrandRelationService.save(categoryBrandRelation);
-
-        return R.ok();
-    }
 
     /**
      * 修改
