@@ -22,10 +22,7 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        IPage<AttrGroupEntity> page = this.page(
-                new Query<AttrGroupEntity>().getPage(params),
-                new QueryWrapper<AttrGroupEntity>()
-        );
+        IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), new QueryWrapper<AttrGroupEntity>());
 
         return new PageUtils(page);
     }
@@ -36,24 +33,17 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         QueryWrapper<AttrGroupEntity> wrapper = new QueryWrapper<AttrGroupEntity>();
         if (StringUtils.isEmpty(key)) {
             wrapper.and((obj) -> {
-                obj
-                        .eq("attr_group_id", key)
-                        .or()
-                        .like("attr_group_name", key);
+                obj.eq("attr_group_id", key).or().like("attr_group_name", key);
             });
-            if (catelogId == 0) {
-                IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params),
-                        wrapper);
-                return new PageUtils(page);
-            } else {
-                wrapper.eq("category_Id", catelogId);
-                IPage<AttrGroupEntity> page =
-                        this.page(new Query<AttrGroupEntity>().getPage(params), wrapper);
-                return new PageUtils(page);
-            }
-
         }
-        return null;
+        if (catelogId == 0) {
+            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), wrapper);
+            return new PageUtils(page);
+        } else {
+            wrapper.eq("category_Id", catelogId);
+            IPage<AttrGroupEntity> page = this.page(new Query<AttrGroupEntity>().getPage(params), wrapper);
+            return new PageUtils(page);
+        }
     }
 
 }
