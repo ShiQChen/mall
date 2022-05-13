@@ -64,5 +64,4 @@ public class AttrEntity implements Serializable {
 
 	@TableField(exist = false)
 	private  Long attrGroupId;
-
 }

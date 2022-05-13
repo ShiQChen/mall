@@ -25,7 +25,7 @@ import com.atguigu.common.utils.R;
  * @date 2022-04-25 11:53:26
  */
 @RestController
-@RequestMapping("memeber/memberlevel")
+@RequestMapping("member/memberlevel")
 public class MemberLevelController {
     @Autowired
     private MemberLevelService memberLevelService;
