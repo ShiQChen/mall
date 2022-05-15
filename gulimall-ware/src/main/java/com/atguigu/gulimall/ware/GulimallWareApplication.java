@@ -4,6 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Created by 石其琛
@@ -12,6 +13,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * On 2022/4/25 14:58
  */
 
+@EnableTransactionManagement
 @EnableDiscoveryClient
 @SpringBootApplication
 @MapperScan("com.atguigu.gulimall.ware.dao")
